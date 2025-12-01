@@ -53,10 +53,9 @@
         }
         .blob { 
             position: absolute; border-radius: 50%;
-            filter: blur(90px); opacity: 0.6; mix-blend-mode: multiply;
+            filter: blur(90px); opacity: 0.6;
             will-change: transform;
         }
-        /* Initial invisible to prevent FOUC, animated in via JS */
         .mb-1 { width: 60vw; height: 60vw; background: #CCFF00; top: -20%; left: -20%; opacity: 0; }
         .mb-2 { width: 50vw; height: 50vw; background: #9EC67C; bottom: -20%; right: -20%; opacity: 0; }
 
@@ -68,7 +67,6 @@
 
         /* UTILS */
         .glass-section { background: transparent; }
-        .bg-translucent { background: rgba(245, 243, 240, 0.7); backdrop-filter: blur(8px); }
         .line-anim { width: 0%; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
         .line-anim.active { width: 100%; }
         
@@ -120,7 +118,7 @@
     <main class="relative z-10">
 
         <!-- 1. HERO -->
-        <section class="min-h-screen flex flex-col justify-center px-6 md:px-20 relative glass-section border-b border-stone/50">
+        <section class="min-h-screen flex flex-col justify-center px-6 md:px-20 relative glass-section">
             <div class="relative z-10">
                 <div class="overflow-hidden mb-[-1vw]"><h1 class="hero-title font-sans font-bold text-giant uppercase leading-none tracking-tighter text-ink">Pure.</h1></div>
                 <div class="overflow-hidden mb-[-1vw] ml-[12vw]"><h1 class="hero-title font-serif italic text-giant text-matcha leading-none">Potent.</h1></div>
@@ -134,8 +132,7 @@
         <!-- 2. SOURCE (Story) -->
         <section class="py-32 md:py-48 px-6 md:px-20 glass-section relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <div class="relative h-[60vh] w-full overflow-hidden group hover-target rounded-sm shadow-2xl">
-                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-neon/10 to-transparent z-10 pointer-events-none"></div>
+                <div class="relative h-[60vh] w-full overflow-hidden group hover-target rounded-sm shadow-2xl bg-ink">
                     <img src="https://images.unsplash.com/photo-1516216628259-d92c3389893c?q=80&w=1200" class="w-full h-full object-cover parallax-img scale-110 grayscale contrast-[0.95]" alt="Source">
                     <div class="absolute bottom-6 left-6 z-20 font-mono text-[10px] uppercase tracking-widest text-white mix-blend-difference">34.89° N</div>
                 </div>
@@ -148,156 +145,289 @@
             </div>
         </section>
 
-        <!-- 3. STATEMENT & TRUST BADGES -->
-        <section class="py-40 px-6 md:px-20 glass-section border-b border-stone/30">
-            <div class="grid grid-cols-12">
-                <div class="col-span-12 md:col-span-10">
-                    <h2 class="font-sans font-extrabold text-5xl md:text-7xl uppercase leading-[0.9] tracking-tighter mb-12 scroll-text text-ink">
-                        No Dust. No Sugar.<br>Just The <span class="text-matcha font-serif italic font-normal tracking-normal">Real Drug.</span>
-                    </h2>
+        <!-- 3. STATEMENT -->
+        <section class="glass-section">
+            <div class="pt-40 pb-16 px-6 md:px-20">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12 md:col-span-10">
+                        <h2 class="font-sans font-extrabold text-5xl md:text-7xl uppercase leading-[0.9] tracking-tighter mb-12 scroll-text text-ink">
+                            No Dust. No Sugar.<br>Just The <span class="text-matcha font-serif italic font-normal tracking-normal">Real Drug.</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROCESS (Sticky Scroll) -->
+        <section id="process" class="glass-section">
+            <div class="px-6 md:px-20 pt-20 pb-8">
+                <h3 class="font-serif text-5xl italic scroll-text">The Process.</h3>
+            </div>
+            
+            <div class="process-container relative">
+                <div class="flex flex-col lg:flex-row">
                     
-                    <!-- NEW: TRUST BADGES ROW -->
-                    <div class="flex flex-wrap gap-6 scroll-text mt-16">
-                        <div class="px-6 py-3 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
+                    <!-- LEFT: Sticky Image -->
+                    <div class="hidden lg:block lg:w-1/2 relative">
+                        <div class="sticky top-0 h-screen flex items-center justify-center p-12">
+                            <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink">
+                                <!-- All images stacked, opacity controlled by JS -->
+                                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1200" 
+                                     alt="Darkness" 
+                                     class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                                     data-step="1">
+                                <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=1200" 
+                                     alt="Harvest" 
+                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                                     data-step="2">
+                                <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=1200" 
+                                     alt="Grind" 
+                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                                     data-step="3">
+                                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=1200" 
+                                     alt="Drop" 
+                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+                                     data-step="4">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RIGHT: Scrolling Text Steps -->
+                    <div class="lg:w-1/2 relative">
+                        
+                        <!-- Step 1 -->
+                        <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="1">
+                            <div class="max-w-md">
+                                <!-- Mobile Image -->
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
+                                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800" 
+                                         alt="Darkness" class="w-full h-full object-cover">
+                                </div>
+                                <span class="font-mono text-sm text-matcha block mb-4">01</span>
+                                <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Darkness</h4>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
+                                    Three weeks before harvest, we cover the plants with shade structures. Starved of sunlight, the leaves respond by producing more chlorophyll.
+                                </p>
+                                <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">21 Days Covered</p>
+                            </div>
+                            <!-- Large Step Number -->
+                            <div class="mt-12 lg:mt-20">
+                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">01</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="2">
+                            <div class="max-w-md">
+                                <!-- Mobile Image -->
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
+                                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=800" 
+                                         alt="Harvest" class="w-full h-full object-cover">
+                                </div>
+                                <span class="font-mono text-sm text-matcha block mb-4">02</span>
+                                <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Harvest</h4>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
+                                    Only the top two leaves and bud are picked by hand. No stems, no old leaves. This is where quality begins – or fails.
+                                </p>
+                                <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Hand-Picked Selection</p>
+                            </div>
+                            <!-- Large Step Number -->
+                            <div class="mt-12 lg:mt-20">
+                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">02</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="3">
+                            <div class="max-w-md">
+                                <!-- Mobile Image -->
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
+                                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=800" 
+                                         alt="Grind" class="w-full h-full object-cover">
+                                </div>
+                                <span class="font-mono text-sm text-matcha block mb-4">03</span>
+                                <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Grind</h4>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
+                                    Traditional granite stone mills turn the dried leaves into powder. The process is deliberately slow – 30 grams per hour – to prevent heat damage.
+                                </p>
+                                <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Stone Milled</p>
+                            </div>
+                            <!-- Large Step Number -->
+                            <div class="mt-12 lg:mt-20">
+                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">03</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="4">
+                            <div class="max-w-md">
+                                <!-- Mobile Image -->
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
+                                    <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800" 
+                                         alt="Drop" class="w-full h-full object-cover">
+                                </div>
+                                <span class="font-mono text-sm text-matcha block mb-4">04</span>
+                                <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Drop</h4>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
+                                    Immediately sealed in UV-proof containers and shipped directly. No warehouse time, no oxidation. From stone mill to your door.
+                                </p>
+                                <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Sealed Fresh</p>
+                            </div>
+                            <!-- Large Step Number -->
+                            <div class="mt-12 lg:mt-20">
+                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">04</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ANALYSIS (Lab Data + Trust Badges) -->
+        <section id="lab" class="py-40 px-6 md:px-20 glass-section text-ink relative">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-ink/20 pb-8 gap-6">
+                    <h3 class="font-serif text-5xl italic">Analysis.</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-4 py-2 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
                             <div class="w-2 h-2 bg-matcha rounded-full"></div>
                             <span class="font-mono text-[10px] uppercase tracking-widest">Lab Tested</span>
                         </div>
-                        <div class="px-6 py-3 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
+                        <div class="px-4 py-2 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
                             <div class="w-2 h-2 bg-matcha rounded-full"></div>
                             <span class="font-mono text-[10px] uppercase tracking-widest">Origin Verified</span>
                         </div>
-                        <div class="px-6 py-3 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
+                        <div class="px-4 py-2 rounded-full border border-ink/20 bg-white/40 backdrop-blur flex items-center gap-2 hover-target">
                             <div class="w-2 h-2 bg-matcha rounded-full"></div>
-                            <span class="font-mono text-xs uppercase tracking-widest">Single Estate</span>
+                            <span class="font-mono text-[10px] uppercase tracking-widest">Single Estate</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- NEW 4. THE PROCESS (Educational Grid) -->
-        <section class="py-32 px-6 md:px-20 bg-translucent relative border-b border-stone/30">
-            <div class="mb-20"><h3 class="font-serif text-5xl italic">The Process.</h3></div>
-            <div class="grid grid-cols-1 md:grid-cols-4 border-t border-ink/20 border-l border-ink/20">
-                
-                <!-- Step 1 -->
-                <div class="p-8 border-b border-r border-ink/20 hover:bg-white/50 transition-colors group">
-                    <span class="font-mono text-xs text-gray-400 block mb-4">01</span>
-                    <h4 class="font-sans text-xl font-bold uppercase mb-2">Darkness</h4>
-                    <p class="font-sans text-sm text-gray-600">21 days covered. Leaves turn emerald green.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="p-8 border-b border-r border-ink/20 hover:bg-white/50 transition-colors group">
-                    <span class="font-mono text-xs text-gray-400 block mb-4">02</span>
-                    <h4 class="font-sans text-xl font-bold uppercase mb-2">Harvest</h4>
-                    <p class="font-sans text-sm text-gray-600">Hand-picked top leaves only. No stems.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="p-8 border-b border-r border-ink/20 hover:bg-white/50 transition-colors group">
-                    <span class="font-mono text-xs text-gray-400 block mb-4">03</span>
-                    <h4 class="font-sans text-xl font-bold uppercase mb-2">Grind</h4>
-                    <p class="font-sans text-sm text-gray-600">Granite mills. 30 grams per hour. Slow.</p>
-                </div>
-                <!-- Step 4 -->
-                <div class="p-8 border-b border-r border-ink/20 hover:bg-white/50 transition-colors group">
-                    <span class="font-mono text-xs text-gray-400 block mb-4">04</span>
-                    <h4 class="font-sans text-xl font-bold uppercase mb-2">Drop</h4>
-                    <p class="font-sans text-sm text-gray-600">Sealed in UV-proof tubes immediately.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 5. VISUAL SLIDER -->
-        <section class="border-b border-stone/30 relative w-full h-[80vh] overflow-hidden bg-translucent">
-            <div id="comparison-slider" class="relative w-full h-full slider-wrap group hover-target">
-                <div class="absolute inset-0 select-none">
-                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2000" class="w-full h-full object-cover opacity-90 mix-blend-multiply" style="filter: sepia(0.8) saturate(0.5) contrast(0.8) brightness(0.9);" draggable="false">
-                    <div class="absolute top-1/2 left-[10%] transform -translate-y-1/2"><h3 class="font-sans font-bold text-[10vw] uppercase text-white opacity-40 tracking-tighter mix-blend-overlay">Oxidized</h3></div>
-                </div>
-                <div id="slider-overlay" class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-white select-none bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2000" class="absolute top-0 left-0 w-screen max-w-none h-full object-cover" style="filter: saturate(1.3) contrast(1.1);" draggable="false">
-                    <div class="absolute top-1/2 right-[10%] transform -translate-y-1/2 text-right"><h3 class="font-sans font-bold text-[10vw] uppercase text-white opacity-90 tracking-tighter drop-shadow-lg">Electric</h3></div>
-                </div>
-                <div id="slider-handle" class="absolute top-0 bottom-0 left-1/2 w-0 z-40 flex items-center justify-center pointer-events-none">
-                    <div class="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-2xl flex items-center justify-center"><svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/></svg></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. LAB DATA -->
-        <section id="lab" class="py-40 px-6 md:px-20 bg-translucent text-ink relative border-b border-stone/30">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex justify-between items-end mb-12 border-b border-ink/20 pb-8">
-                    <h3 class="font-serif text-5xl italic">Analysis.</h3>
-                    <div class="font-mono text-[10px] uppercase tracking-widest border border-ink/20 px-3 py-1 rounded-full bg-white/50">Batch 409</div>
-                </div>
                 <div class="w-full">
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">01</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">L-Theanine</span><span class="font-mono text-xs text-gray-400 hidden md:block">FOCUS</span><span class="text-right font-serif italic text-2xl text-matcha">High</span></div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">02</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">Chlorophyll</span><span class="font-mono text-xs text-gray-400 hidden md:block">COLOR</span><span class="text-right font-serif italic text-2xl text-matcha">Dense</span></div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">03</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">Texture</span><span class="font-mono text-xs text-gray-400 hidden md:block">GRIND</span><span class="text-right font-serif italic text-2xl text-matcha">Micro</span></div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
+                        <span class="font-mono text-xs text-gray-400">01</span>
+                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">L-Theanine</span>
+                        <span class="font-mono text-xs text-gray-400 hidden md:block">FOCUS</span>
+                        <span class="text-right font-serif italic text-2xl text-matcha">High</span>
+                    </div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
+                        <span class="font-mono text-xs text-gray-400">02</span>
+                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Chlorophyll</span>
+                        <span class="font-mono text-xs text-gray-400 hidden md:block">COLOR</span>
+                        <span class="text-right font-serif italic text-2xl text-matcha">Dense</span>
+                    </div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
+                        <span class="font-mono text-xs text-gray-400">03</span>
+                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Texture</span>
+                        <span class="font-mono text-xs text-gray-400 hidden md:block">GRIND</span>
+                        <span class="text-right font-serif italic text-2xl text-matcha">Micro</span>
+                    </div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
+                        <span class="font-mono text-xs text-gray-400">04</span>
+                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Caffeine</span>
+                        <span class="font-mono text-xs text-gray-400 hidden md:block">ENERGY</span>
+                        <span class="text-right font-serif italic text-2xl text-matcha">Balanced</span>
+                    </div>
+                </div>
+                <div class="mt-8 text-right">
+                    <span class="font-mono text-[10px] uppercase tracking-widest border border-ink/20 px-3 py-1 rounded-full bg-white/50">Batch 409</span>
                 </div>
             </div>
         </section>
 
-        <!-- 7. SUPPLY -->
-        <section id="supply" class="py-40 px-6 md:px-20 glass-section border-b border-stone/50 bg-translucent">
-            <div class="mb-24 flex justify-between items-end">
-                <h3 class="font-sans font-bold text-xl uppercase tracking-widest">Stash</h3>
-            </div>
-            <div class="flex flex-col border-t border-ink/20">
-                <div class="group relative py-24 border-b border-ink/10 cursor-pointer hover-target hover:bg-white/30 transition-colors">
-                    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center relative z-10 px-4">
-                        <h2 class="font-sans font-extrabold text-[7vw] uppercase leading-none text-ink group-hover:text-gray-400 transition-colors duration-300">Daily</h2><span class="font-serif text-2xl italic mt-4 md:mt-0">$29</span>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=600" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-80 object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-3 pointer-events-none shadow-xl z-20">
-                </div>
-                <div class="group relative py-24 border-b border-ink/10 cursor-pointer hover-target hover:bg-white/30 transition-colors">
-                    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center relative z-10 px-4">
-                        <h2 class="font-sans font-extrabold text-[7vw] uppercase leading-none text-ink group-hover:text-matcha transition-colors duration-300">Premium</h2><span class="font-serif text-2xl italic mt-4 md:mt-0">$45</span>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=600" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-80 object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 -rotate-2 pointer-events-none shadow-xl z-20">
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW 8. DOSAGE GUIDE -->
-        <section class="py-32 px-6 md:px-20 bg-translucent relative border-b border-stone/50">
+        <!-- 6. USAGE PROTOCOL -->
+        <section class="py-32 px-6 md:px-20 glass-section relative">
             <div class="text-center mb-20">
-                <h3 class="font-serif text-5xl italic">Usage Protocol.</h3>
+                <h3 class="font-serif text-5xl italic scroll-text">Usage Protocol.</h3>
+                <p class="font-sans text-gray-500 mt-4 max-w-md mx-auto scroll-text">Timing is everything. Here's how to optimize your intake.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="bg-white/40 p-8 border border-ink/5 hover:bg-white hover:scale-105 transition-all duration-500 group">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white/50 p-8 border border-ink/10 hover:bg-white hover:shadow-lg transition-all duration-500 group rounded-sm">
                     <div class="font-mono text-xs text-matcha mb-4 uppercase tracking-widest">07:00 AM</div>
-                    <h4 class="font-sans text-2xl font-bold uppercase mb-2">Focus</h4>
-                    <p class="font-sans text-sm text-gray-500 mb-6">Clear the fog. Replace your coffee. 4 hours of sustained output.</p>
+                    <h4 class="font-sans text-2xl font-bold uppercase mb-3">Focus</h4>
+                    <p class="font-sans text-sm text-gray-500 mb-6 leading-relaxed">Clear the fog. Replace your coffee. 4 hours of sustained output.</p>
                     <span class="text-ink font-mono text-xs border-t border-ink/10 pt-4 block">DOSE: 1 TUBE</span>
                 </div>
-                <div class="bg-white/40 p-8 border border-ink/5 hover:bg-white hover:scale-105 transition-all duration-500 group delay-100">
+                <div class="bg-white/50 p-8 border border-ink/10 hover:bg-white hover:shadow-lg transition-all duration-500 group rounded-sm">
                     <div class="font-mono text-xs text-matcha mb-4 uppercase tracking-widest">02:00 PM</div>
-                    <h4 class="font-sans text-2xl font-bold uppercase mb-2">Flow</h4>
-                    <p class="font-sans text-sm text-gray-500 mb-6">Deep work session. No jitter. Just pure, electric signal.</p>
+                    <h4 class="font-sans text-2xl font-bold uppercase mb-3">Flow</h4>
+                    <p class="font-sans text-sm text-gray-500 mb-6 leading-relaxed">Deep work session. No jitter. Just pure, electric signal.</p>
                     <span class="text-ink font-mono text-xs border-t border-ink/10 pt-4 block">DOSE: 1.5 TUBES</span>
                 </div>
-                <div class="bg-white/40 p-8 border border-ink/5 hover:bg-white hover:scale-105 transition-all duration-500 group delay-200">
+                <div class="bg-white/50 p-8 border border-ink/10 hover:bg-white hover:shadow-lg transition-all duration-500 group rounded-sm">
                     <div class="font-mono text-xs text-matcha mb-4 uppercase tracking-widest">08:00 PM</div>
-                    <h4 class="font-sans text-2xl font-bold uppercase mb-2">Detox</h4>
-                    <p class="font-sans text-sm text-gray-500 mb-6">High antioxidants to recover. No sleep disruption.</p>
+                    <h4 class="font-sans text-2xl font-bold uppercase mb-3">Detox</h4>
+                    <p class="font-sans text-sm text-gray-500 mb-6 leading-relaxed">High antioxidants to recover. No sleep disruption.</p>
                     <span class="text-ink font-mono text-xs border-t border-ink/10 pt-4 block">DOSE: 0.5 TUBE</span>
                 </div>
             </div>
         </section>
 
-        <!-- NEW 9. WAITLIST -->
-        <section id="waitlist" class="py-40 px-6 md:px-20 bg-translucent text-center relative">
+        <!-- 7. PRODUCTS -->
+        <section id="supply" class="py-40 px-6 md:px-20 glass-section">
+            <div class="mb-16">
+                <h3 class="font-serif text-5xl italic scroll-text">The Stash.</h3>
+                <p class="font-sans text-gray-500 mt-4 scroll-text">Two grades. One obsession.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Daily -->
+                <div class="group relative overflow-hidden rounded-sm hover-target bg-white/30 border border-ink/10 hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="p-6 md:p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-1">Everyday Use</span>
+                                <h4 class="font-sans text-3xl md:text-4xl font-bold uppercase">Daily</h4>
+                            </div>
+                            <span class="font-serif text-2xl italic text-matcha">$29</span>
+                        </div>
+                        <p class="font-sans text-gray-500 mb-5 leading-relaxed text-sm">Smooth, balanced, reliable. Your morning ritual, elevated. 30g tin – approximately 30 servings.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-ink/20 rounded-full">Ceremonial Grade</span>
+                            <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-ink/20 rounded-full">Uji Origin</span>
+                        </div>
+                        <button class="w-full bg-ink text-white p-3 font-mono text-xs font-bold uppercase tracking-widest hover:bg-matcha transition-colors">
+                            Coming Soon
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Premium -->
+                <div class="group relative overflow-hidden rounded-sm hover-target bg-white/30 border border-ink/10 hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="absolute top-3 right-3">
+                        <span class="font-mono text-[10px] text-white bg-matcha px-3 py-1 uppercase tracking-widest">Limited</span>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-1">Competition Grade</span>
+                                <h4 class="font-sans text-3xl md:text-4xl font-bold uppercase">Premium</h4>
+                            </div>
+                            <span class="font-serif text-2xl italic text-matcha">$45</span>
+                        </div>
+                        <p class="font-sans text-gray-500 mb-5 leading-relaxed text-sm">First harvest only. Intense umami, zero bitterness. For those who know. 30g tin – approximately 30 servings.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-ink/20 rounded-full">First Harvest</span>
+                            <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 border border-ink/20 rounded-full">Single Estate</span>
+                        </div>
+                        <button class="w-full bg-ink text-white p-3 font-mono text-xs font-bold uppercase tracking-widest hover:bg-matcha transition-colors">
+                            Coming Soon
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. WAITLIST -->
+        <section id="waitlist" class="py-40 px-6 md:px-20 glass-section text-center relative">
             <div class="relative z-10 max-w-xl mx-auto">
                 <div class="mb-8 inline-block">
                     <span class="font-mono text-xs text-neon bg-ink px-3 py-1 uppercase tracking-widest">Early Access Only</span>
                 </div>
-                <h2 class="font-sans font-bold text-5xl md:text-7xl text-ink uppercase tracking-tighter mb-4 leading-none">
+                <h2 class="font-sans font-bold text-5xl md:text-7xl text-ink uppercase tracking-tighter mb-4 leading-none scroll-text">
                     Secure Your<br>Position.
                 </h2>
-                <p class="font-serif italic text-xl text-gray-500 mb-12">
+                <p class="font-serif italic text-xl text-gray-500 mb-12 scroll-text">
                     Limited first batch release. <span class="text-ink font-bold not-italic" id="count">347</span> secured so far.
                 </p>
 
@@ -312,8 +442,11 @@
             </div>
         </section>
 
-        <footer class="py-12 bg-transparent text-center border-t border-stone relative z-10">
-            <div class="w-full mx-auto max-w-6xl pt-2 flex justify-between font-mono text-[10px] text-gray-400 uppercase tracking-widest px-6"><span>© 2025 M.S.Co.</span><span>Legal</span></div>
+        <footer class="py-12 bg-transparent text-center relative z-10">
+            <div class="w-full mx-auto max-w-6xl pt-2 flex justify-between font-mono text-[10px] text-gray-400 uppercase tracking-widest px-6">
+                <span>© 2025 M.S.Co.</span>
+                <span>Legal</span>
+            </div>
         </footer>
 
     </main>
@@ -323,8 +456,8 @@
 
         function enterSite() {
             document.getElementById('gate').classList.add('gate-open');
-            gsap.to(".mb-1", { opacity: 0.5, duration: 2, delay: 0.5 }); // Neon
-            gsap.to(".mb-2", { opacity: 0.4, duration: 2, delay: 0.5 }); // Deep Green
+            gsap.to(".mb-1", { opacity: 0.5, duration: 2, delay: 0.5 });
+            gsap.to(".mb-2", { opacity: 0.4, duration: 2, delay: 0.5 });
             initAnimations();
         }
 
@@ -340,7 +473,7 @@
             }, 2000);
         }, 5000);
 
-        // Standard Scripts
+        // Cursor
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', e => { gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 }); });
         document.querySelectorAll('.hover-target').forEach(el => {
@@ -348,22 +481,10 @@
             el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
         });
 
-        // Slider
-        const sliderWrap = document.getElementById('comparison-slider');
-        const overlay = document.getElementById('slider-overlay');
-        const handle = document.getElementById('slider-handle');
-        const moveS = (e) => {
-            let x = (e.type === 'touchmove' ? e.touches[0].clientX : e.clientX) - sliderWrap.getBoundingClientRect().left;
-            if(x<0) x=0; if(x>sliderWrap.getBoundingwidth) x=sliderWrap.getBoundingwidth;
-            overlay.style.width = x+'px'; handle.style.left = x+'px';
-        }
-        sliderWrap.addEventListener('mousemove', moveS);
-        sliderWrap.addEventListener('touchmove', moveS);
-
         function initAnimations() {
             gsap.from(".hero-title", { y: 100, opacity: 0, duration: 1.5, stagger: 0.15, ease: "power4.out" });
 
-            // EXTENDED SNAKE (Now covering more sections)
+            // Blob Animation
             let tl = gsap.timeline({
                 scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 }
             });
@@ -390,6 +511,32 @@
                     "100%": { bottom: "100%", right: "50%" }
                 }, ease: "sine.inOut"
             }, 0);
+
+            // Process Sticky Scroll - Image switching
+            const processSteps = document.querySelectorAll('.process-step');
+            const processImages = document.querySelectorAll('.process-img');
+            
+            processSteps.forEach((step) => {
+                const stepNum = step.dataset.step;
+                
+                ScrollTrigger.create({
+                    trigger: step,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => updateProcessImage(stepNum),
+                    onEnterBack: () => updateProcessImage(stepNum),
+                });
+            });
+            
+            function updateProcessImage(stepNum) {
+                processImages.forEach(img => {
+                    if (img.dataset.step === stepNum) {
+                        gsap.to(img, { opacity: 1, duration: 0.5 });
+                    } else {
+                        gsap.to(img, { opacity: 0, duration: 0.5 });
+                    }
+                });
+            }
 
             document.querySelectorAll('.line-anim').forEach(el => {
                 gsap.to(el, { scrollTrigger: { trigger: el, start: "top 85%" }, width: "100%", duration: 1.5, ease: "expo.out" });
