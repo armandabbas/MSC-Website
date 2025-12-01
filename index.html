@@ -133,7 +133,12 @@
         <section class="py-32 md:py-48 px-6 md:px-20 glass-section relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                 <div class="relative h-[60vh] w-full overflow-hidden group hover-target rounded-sm shadow-2xl bg-ink">
-                    <img src="https://images.unsplash.com/photo-1516216628259-d92c3389893c?q=80&w=1200" class="w-full h-full object-cover parallax-img scale-110 grayscale contrast-[0.95]" alt="Source">
+                    <video 
+                        class="w-full h-full object-cover parallax-img scale-110 grayscale contrast-[0.95]"
+                        autoplay muted loop playsinline
+                        poster="https://images.unsplash.com/photo-1516216628259-d92c3389893c?q=80&w=1200">
+                        <source src="https://videos.pexels.com/video-files/2871918/2871918-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute bottom-6 left-6 z-20 font-mono text-[10px] uppercase tracking-widest text-white mix-blend-difference">34.89° N</div>
                 </div>
                 <div class="flex flex-col justify-center">
@@ -172,19 +177,19 @@
                         <div class="sticky top-0 h-screen flex items-center justify-center p-12">
                             <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink">
                                 <!-- All images stacked, opacity controlled by JS -->
-                                <img src="1.jpg" 
+                                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=1200" 
                                      alt="Darkness" 
                                      class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
                                      data-step="1">
-                                <img src="Unbenannt-8.png" 
+                                <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=1200" 
                                      alt="Harvest" 
                                      class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
                                      data-step="2">
-                                <img src="3.jpg" 
+                                <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=1200" 
                                      alt="Grind" 
                                      class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
                                      data-step="3">
-                                <img src="4.jpg" 
+                                <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=1200" 
                                      alt="Drop" 
                                      class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
                                      data-step="4">
