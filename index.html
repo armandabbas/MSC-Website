@@ -93,7 +93,6 @@
 
     <div id="cursor" class="hidden md:block"></div>
 
-    <!-- GATE -->
     <div id="gate" class="fixed inset-0 bg-paper flex flex-col items-center justify-center h-screen w-full text-ink border-b-8 border-ink z-50">
         <div class="gate-blob-container">
             <div class="gb-1 top-0 left-0"></div><div class="gb-2 bottom-0 right-0"></div>
@@ -106,13 +105,11 @@
         </div>
     </div>
 
-    <!-- BACKGROUND -->
     <div class="blob-layer">
         <div class="blob mb-1" id="b1"></div>
         <div class="blob mb-2" id="b2"></div>
     </div>
 
-    <!-- NAV -->
     <nav class="fixed top-0 w-full z-40 px-8 py-6 flex justify-between items-start pointer-events-none mix-blend-darken">
         <a href="#" class="font-sans text-xs font-extrabold uppercase tracking-widest pointer-events-auto hover-target">M.S.Co.</a>
         <div class="flex flex-col items-end font-mono text-[10px] uppercase tracking-widest gap-1 pointer-events-auto text-gray-600">
@@ -135,7 +132,7 @@
             </div>
         </section>
 
-        <!-- INTRO SECTION (Cinema/Flash Aesthetic) -->
+        <!-- INTRO SECTION -->
         <section class="py-32 md:py-40 px-6 md:px-20 glass-section relative">
             <div class="flex flex-col w-full">
                 
@@ -150,8 +147,7 @@
 
                 <!-- Cinematic Image Container -->
                 <div class="relative w-full h-[50vh] md:h-[70vh] overflow-hidden group hover-target rounded-sm shadow-2xl bg-ink scroll-text">
-                    
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2574&auto=format&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1507643179173-39db4f92c827?q=80&w=2669&auto=format&fit=crop" 
                          class="w-full h-full object-cover parallax-img scale-125 -translate-y-[50px] grayscale hover:grayscale-0 transition-all duration-1000" 
                          alt="Effect">
                     
@@ -183,87 +179,80 @@
             </div>
         </section>
 
-        <!-- PROCESS SECTION (L-Shape Logic) -->
-        <section id="process" class="relative bg-paper">
-            
+        <!-- PROCESS SECTION (Optimized) -->
+        <!-- HIER: Nur noch auf Mobile sichtbar (lg:hidden), damit es auf Desktop nicht doppelt ist -->
+        <section id="process" class="glass-section lg:hidden">
+            <div class="px-6 md:px-20 pt-0 pb-8">
+                <h3 class="font-serif text-5xl italic scroll-text">The Process.</h3>
+            </div>
+        </section>
+        
+        <div class="process-container relative">
             <div class="flex flex-col lg:flex-row">
                 
-                <!-- LEFT COLUMN: STICKY -->
-                <div class="hidden lg:flex lg:w-1/2 h-screen sticky top-0 flex-col relative z-20">
-                    
-                    <!-- Fixed Headline -->
-                    <div class="absolute top-12 left-12 z-30">
-                        <h3 class="font-serif text-6xl italic text-ink">The Process.</h3>
-                    </div>
+                <div class="hidden lg:block lg:w-1/2 relative">
+                    <!-- HIER: items-center für Bild-Zentrierung & Headline eingebaut -->
+                    <div class="sticky top-0 h-screen flex items-center justify-center p-12 relative">
+                        
+                        <!-- NEUE HEADLINE (Absolut positioniert, damit sie sticky mitkommt) -->
+                        <h3 class="font-serif text-5xl italic text-ink absolute top-24 left-20 z-10">The Process.</h3>
 
-                    <!-- Image (Centered) -->
-                    <div class="flex-grow flex items-center justify-center w-full">
-                        <div class="process-image-container relative w-[60%] aspect-[4/5] overflow-hidden rounded-sm bg-ink shadow-2xl">
-                            <!-- Images -->
-                            <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" data-step="1">
-                            <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" data-step="2">
-                            <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" data-step="3">
-                            <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" data-step="4">
+                        <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink shadow-2xl">
+                            <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="1">
+                            <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="2">
+                            <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="3">
+                            <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="4">
                         </div>
                     </div>
                 </div>
                 
-                <!-- RIGHT COLUMN: SCROLLING TEXT -->
-                <div class="lg:w-1/2 relative z-10 bg-paper">
-                    
-                    <!-- Mobile Headline -->
-                    <div class="lg:hidden px-6 pt-20 pb-8">
-                        <h3 class="font-serif text-5xl italic text-ink">The Process.</h3>
-                    </div>
-
-                    <!-- Step 1 (Anchor - Static) -->
-                    <div class="process-step min-h-[80vh] flex flex-col justify-center px-6 md:px-20 lg:pl-24" data-step="1">
-                        <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="1.1.jpg" class="w-full h-full object-cover"></div>
+                <div class="lg:w-1/2 relative">
+                    <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="1">
                         <div class="max-w-md">
-                            <span class="font-mono text-sm text-matcha block mb-4 border-b border-matcha/20 pb-2 inline-block">01</span>
-                            <h4 class="font-sans text-5xl font-bold uppercase mb-6 text-ink">Darkness</h4>
+                            <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="1.1.jpg" alt="Darkness" class="w-full h-full object-cover"></div>
+                            <span class="font-mono text-sm text-matcha block mb-4">01</span>
+                            <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Darkness</h4>
                             <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Three weeks before harvest, we cover the plants with shade structures. Starved of sunlight, the leaves respond by producing more chlorophyll.</p>
                             <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">21 Days Covered</p>
                         </div>
+                        <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">01</span></div>
                     </div>
                     
-                    <!-- Step 2 -->
-                    <!-- l-motion-step startet weit links, hinter dem Bild -->
-                    <div class="process-step min-h-[80vh] flex flex-col justify-center px-6 md:px-20 lg:pl-24" data-step="2">
-                        <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="2.jpg" class="w-full h-full object-cover"></div>
-                        <div class="max-w-md slide-in-step lg:opacity-0 lg:transform lg:-translate-x-[50vw]">
-                            <span class="font-mono text-sm text-matcha block mb-4 border-b border-matcha/20 pb-2 inline-block">02</span>
-                            <h4 class="font-sans text-5xl font-bold uppercase mb-6 text-ink">Harvest</h4>
+                    <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="2">
+                        <div class="max-w-md">
+                            <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="2.jpg" alt="Harvest" class="w-full h-full object-cover"></div>
+                            <span class="font-mono text-sm text-matcha block mb-4">02</span>
+                            <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Harvest</h4>
                             <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Only the top two leaves and bud are picked by hand. No stems, no old leaves. This is where quality begins – or fails.</p>
                             <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Hand-Picked Selection</p>
                         </div>
+                        <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">02</span></div>
                     </div>
                     
-                    <!-- Step 3 -->
-                    <div class="process-step min-h-[80vh] flex flex-col justify-center px-6 md:px-20 lg:pl-24" data-step="3">
-                        <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="3.jpg" class="w-full h-full object-cover"></div>
-                        <div class="max-w-md slide-in-step lg:opacity-0 lg:transform lg:-translate-x-[50vw]">
-                            <span class="font-mono text-sm text-matcha block mb-4 border-b border-matcha/20 pb-2 inline-block">03</span>
-                            <h4 class="font-sans text-5xl font-bold uppercase mb-6 text-ink">Grind</h4>
-                            <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Traditional granite stone mills turn the dried leaves into powder. The process is deliberately slow – 30 grams per hour.</p>
+                    <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="3">
+                        <div class="max-w-md">
+                            <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="3.jpg" alt="Grind" class="w-full h-full object-cover"></div>
+                            <span class="font-mono text-sm text-matcha block mb-4">03</span>
+                            <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Grind</h4>
+                            <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Traditional granite stone mills turn the dried leaves into powder. The process is deliberately slow – 30 grams per hour – to prevent heat damage.</p>
                             <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Stone Milled</p>
                         </div>
+                        <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">03</span></div>
                     </div>
 
-                    <!-- Step 4 -->
-                    <div class="process-step min-h-[80vh] flex flex-col justify-center px-6 md:px-20 lg:pl-24" data-step="4">
-                        <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="4.jpg" class="w-full h-full object-cover"></div>
-                        <div class="max-w-md slide-in-step lg:opacity-0 lg:transform lg:-translate-x-[50vw]">
-                            <span class="font-mono text-sm text-matcha block mb-4 border-b border-matcha/20 pb-2 inline-block">04</span>
-                            <h4 class="font-sans text-5xl font-bold uppercase mb-6 text-ink">Drop</h4>
+                    <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="4">
+                        <div class="max-w-md">
+                            <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="4.jpg" alt="Drop" class="w-full h-full object-cover"></div>
+                            <span class="font-mono text-sm text-matcha block mb-4">04</span>
+                            <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Drop</h4>
                             <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Immediately sealed in UV-proof containers and shipped directly. No warehouse time, no oxidation. From stone mill to your door.</p>
                             <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Sealed Fresh</p>
                         </div>
+                        <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">04</span></div>
                     </div>
-
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- LAB SPECS -->
         <section id="lab" class="pt-10 pb-40 px-6 md:px-20 glass-section text-ink relative">
@@ -500,22 +489,6 @@
                     else { gsap.to(img, { opacity: 0, duration: 0.5 }); }
                 });
             }
-
-            // NEW: L-MOTION for Steps 2, 3, 4
-            // Animate .slide-in-step elements from left (-50vw) to position (0)
-            gsap.utils.toArray('.slide-in-step').forEach((elem) => {
-                gsap.to(elem, {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "top 85%", // Starts early to look like it slides in from bottom
-                        end: "top 55%",
-                        scrub: 1
-                    },
-                    x: "0%", 
-                    opacity: 1,
-                    ease: "power2.out"
-                });
-            });
 
             // Sticky Images Parallax
             gsap.to(".process-img", {
