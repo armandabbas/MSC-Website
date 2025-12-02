@@ -134,6 +134,7 @@
         <section class="py-32 md:py-48 px-6 md:px-20 glass-section relative">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                 <div class="relative h-[60vh] w-full overflow-hidden group hover-target rounded-sm shadow-2xl bg-paper">
+                    <!-- HIER ist das Referenzbild mit scale-125 und -translate-y -->
                     <img src="5.jpg" class="w-full h-full object-cover parallax-img scale-125 grayscale contrast-[0.95] -translate-y-[50px]" alt="Source">
                     <div class="absolute bottom-6 left-6 z-20 font-mono text-[10px] uppercase tracking-widest text-white mix-blend-difference">34.89° N</div>
                 </div>
@@ -169,11 +170,11 @@
                     <div class="hidden lg:block lg:w-1/2 relative">
                         <div class="sticky top-0 h-screen flex items-center justify-center p-12">
                             <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink">
-                                <!-- HIER: scale-125 hinzugefügt, damit Platz für die Bewegung ist -->
-                                <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 scale-125" data-step="1">
-                                <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="2">
-                                <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="3">
-                                <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="4">
+                                <!-- HIER: Wir haben scale-125 und -translate-y-[50px] hinzugefügt, exakt wie beim ersten Bild -->
+                                <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="1">
+                                <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="2">
+                                <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="3">
+                                <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125 -translate-y-[50px]" data-step="4">
                             </div>
                         </div>
                     </div>
@@ -453,15 +454,16 @@
                 });
             }
 
-            // 2. NEU: Parallax-Animation für die Sticky-Bilder (Verschiebung auf Y-Achse)
+            // 2. PARALLAX-ANIMATION für die Sticky-Bilder (FIXED)
+            // Wir animieren alle .process-img gleichzeitig über die gesamte Dauer der Sektion
             gsap.to(".process-img", {
                 scrollTrigger: {
-                    trigger: "#process", // Animation läuft über die gesamte Sektion
+                    trigger: ".process-container", // Animation läuft über den gesamten Container
                     start: "top bottom",
                     end: "bottom top",
                     scrub: true
                 },
-                y: 100, // Langsame Bewegung nach unten
+                y: 100, // Bewegung um 100px nach unten (analog zum ersten Bild)
                 ease: "none"
             });
 
