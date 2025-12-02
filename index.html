@@ -45,10 +45,10 @@
         ::-webkit-scrollbar { width: 0; background: transparent; }
 
         /* --- 1. FIXED BACKGROUND BLOBS --- */
-        /* Z-Index auf -1 gesetzt, damit sie garantiert hinten bleiben */
+        /* FIX: Blobs are strictly z-0 */
         .blob-layer { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: -1; overflow: hidden;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
         .blob { 
             position: absolute; border-radius: 50%;
@@ -162,100 +162,58 @@
                     <div class="hidden lg:block lg:w-1/2 relative">
                         <div class="sticky top-0 h-screen flex items-center justify-center p-12">
                             <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink">
-                                <img src="1.1.jpg" 
-                                     alt="Darkness" 
-                                     class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-                                     data-step="1">
-                                <img src="2.jpg" 
-                                     alt="Harvest" 
-                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                                     data-step="2">
-                                <img src="3.jpg" 
-                                     alt="Grind" 
-                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                                     data-step="3">
-                                <img src="4.jpg" 
-                                     alt="Drop" 
-                                     class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                                     data-step="4">
+                                <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700" data-step="1">
+                                <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="2">
+                                <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="3">
+                                <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="4">
                             </div>
                         </div>
                     </div>
                     
                     <div class="lg:w-1/2 relative">
-                        
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="1">
                             <div class="max-w-md">
-                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800" 
-                                         alt="Darkness" class="w-full h-full object-cover">
-                                </div>
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="1.1.jpg" alt="Darkness" class="w-full h-full object-cover"></div>
                                 <span class="font-mono text-sm text-matcha block mb-4">01</span>
                                 <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Darkness</h4>
-                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-                                    Three weeks before harvest, we cover the plants with shade structures. Starved of sunlight, the leaves respond by producing more chlorophyll.
-                                </p>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Three weeks before harvest, we cover the plants with shade structures. Starved of sunlight, the leaves respond by producing more chlorophyll.</p>
                                 <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">21 Days Covered</p>
                             </div>
-                            <div class="mt-12 lg:mt-20">
-                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">01</span>
-                            </div>
+                            <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">01</span></div>
                         </div>
                         
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="2">
                             <div class="max-w-md">
-                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=800" 
-                                         alt="Harvest" class="w-full h-full object-cover">
-                                </div>
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="2.jpg" alt="Harvest" class="w-full h-full object-cover"></div>
                                 <span class="font-mono text-sm text-matcha block mb-4">02</span>
                                 <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Harvest</h4>
-                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-                                    Only the top two leaves and bud are picked by hand. No stems, no old leaves. This is where quality begins – or fails.
-                                </p>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Only the top two leaves and bud are picked by hand. No stems, no old leaves. This is where quality begins – or fails.</p>
                                 <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Hand-Picked Selection</p>
                             </div>
-                            <div class="mt-12 lg:mt-20">
-                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">02</span>
-                            </div>
+                            <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">02</span></div>
                         </div>
                         
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="3">
                             <div class="max-w-md">
-                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=800" 
-                                         alt="Grind" class="w-full h-full object-cover">
-                                </div>
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="3.jpg" alt="Grind" class="w-full h-full object-cover"></div>
                                 <span class="font-mono text-sm text-matcha block mb-4">03</span>
                                 <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Grind</h4>
-                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-                                    Traditional granite stone mills turn the dried leaves into powder. The process is deliberately slow – 30 grams per hour – to prevent heat damage.
-                                </p>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Traditional granite stone mills turn the dried leaves into powder. The process is deliberately slow – 30 grams per hour – to prevent heat damage.</p>
                                 <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Stone Milled</p>
                             </div>
-                            <div class="mt-12 lg:mt-20">
-                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">03</span>
-                            </div>
+                            <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">03</span></div>
                         </div>
-                        
+
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="4">
                             <div class="max-w-md">
-                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800" 
-                                         alt="Drop" class="w-full h-full object-cover">
-                                </div>
+                                <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video"><img src="4.jpg" alt="Drop" class="w-full h-full object-cover"></div>
                                 <span class="font-mono text-sm text-matcha block mb-4">04</span>
                                 <h4 class="font-sans text-4xl md:text-5xl font-bold uppercase mb-6 leading-tight">Drop</h4>
-                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">
-                                    Immediately sealed in UV-proof containers and shipped directly. No warehouse time, no oxidation. From stone mill to your door.
-                                </p>
+                                <p class="font-sans text-lg text-gray-600 leading-relaxed mb-6">Immediately sealed in UV-proof containers and shipped directly. No warehouse time, no oxidation. From stone mill to your door.</p>
                                 <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">Sealed Fresh</p>
                             </div>
-                            <div class="mt-12 lg:mt-20">
-                                <span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">04</span>
-                            </div>
+                            <div class="mt-12 lg:mt-20"><span class="font-serif italic text-[20vw] lg:text-[12vw] text-gray-600 leading-none">04</span></div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -287,30 +245,10 @@
                         <span class="font-mono text-xs text-gray-400 hidden md:block">CALM FOCUS</span>
                         <span class="text-right font-serif italic text-2xl text-matcha">34mg/g</span>
                     </div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
-                        <span class="font-mono text-xs text-gray-400">02</span>
-                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Caffeine</span>
-                        <span class="font-mono text-xs text-gray-400 hidden md:block">SUSTAINED ENERGY</span>
-                        <span class="text-right font-serif italic text-2xl text-matcha">32mg/g</span>
-                    </div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
-                        <span class="font-mono text-xs text-gray-400">03</span>
-                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">EGCG</span>
-                        <span class="font-mono text-xs text-gray-400 hidden md:block">ANTIOXIDANT</span>
-                        <span class="text-right font-serif italic text-2xl text-matcha">105mg/g</span>
-                    </div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
-                        <span class="font-mono text-xs text-gray-400">04</span>
-                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Particle Size</span>
-                        <span class="font-mono text-xs text-gray-400 hidden md:block">STONE MILLED</span>
-                        <span class="text-right font-serif italic text-2xl text-matcha">&lt;10μm</span>
-                    </div>
-                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4">
-                        <span class="font-mono text-xs text-gray-400">05</span>
-                        <span class="font-sans text-2xl font-bold uppercase tracking-tight">Chlorophyll</span>
-                        <span class="font-mono text-xs text-gray-400 hidden md:block">COLOR DENSITY</span>
-                        <span class="text-right font-serif italic text-2xl text-matcha">14.2mg/g</span>
-                    </div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">02</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">Caffeine</span><span class="font-mono text-xs text-gray-400 hidden md:block">SUSTAINED ENERGY</span><span class="text-right font-serif italic text-2xl text-matcha">32mg/g</span></div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">03</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">EGCG</span><span class="font-mono text-xs text-gray-400 hidden md:block">ANTIOXIDANT</span><span class="text-right font-serif italic text-2xl text-matcha">105mg/g</span></div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">04</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">Particle Size</span><span class="font-mono text-xs text-gray-400 hidden md:block">STONE MILLED</span><span class="text-right font-serif italic text-2xl text-matcha">&lt;10μm</span></div>
+                    <div class="group py-8 grid grid-cols-2 md:grid-cols-4 gap-4 items-center border-b border-ink/10 hover:bg-white/40 transition-colors px-4"><span class="font-mono text-xs text-gray-400">05</span><span class="font-sans text-2xl font-bold uppercase tracking-tight">Chlorophyll</span><span class="font-mono text-xs text-gray-400 hidden md:block">COLOR DENSITY</span><span class="text-right font-serif italic text-2xl text-matcha">14.2mg/g</span></div>
                 </div>
                 <div class="mt-8 text-right">
                     <span class="font-mono text-[10px] uppercase tracking-widest border border-ink/20 px-3 py-1 rounded-full bg-white/50">Batch 409 · Tested Dec 2024</span>
@@ -319,7 +257,7 @@
         </section>
 
         <section class="py-32 px-6 md:px-20 glass-section relative">
-            <div class="text-center mb-20">
+             <div class="text-center mb-20">
                 <h3 class="font-serif text-5xl italic scroll-text">Usage Protocol.</h3>
                 <p class="font-sans text-gray-500 mt-4 max-w-md mx-auto scroll-text">Timing is everything. Here's how to optimize your intake.</p>
             </div>
@@ -347,20 +285,13 @@
 
         <section class="relative h-[70vh] md:h-[80vh] overflow-hidden">
             <div class="absolute inset-0">
-                <img src="matcha.png" 
-                     alt="Pure Matcha Powder" 
-                     class="w-full h-full object-cover">
+                <img src="matcha.png" alt="Pure Matcha Powder" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/40 to-ink/70"></div>
             </div>
-            
             <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
                 <span class="font-mono text-xs text-neon uppercase tracking-widest mb-6">The Color of Quality</span>
-                <h2 class="font-serif italic text-5xl md:text-7xl lg:text-8xl text-white leading-none mb-8">
-                    This Is What<br>Pure Looks Like.
-                </h2>
-                <p class="font-sans text-white/70 max-w-md text-lg">
-                    Vibrant emerald green. No yellow tint, no dull grey. The color tells you everything.
-                </p>
+                <h2 class="font-serif italic text-5xl md:text-7xl lg:text-8xl text-white leading-none mb-8">This Is What<br>Pure Looks Like.</h2>
+                <p class="font-sans text-white/70 max-w-md text-lg">Vibrant emerald green. No yellow tint, no dull grey. The color tells you everything.</p>
             </div>
         </section>
 
@@ -370,33 +301,22 @@
                 <p class="font-sans text-gray-500 mt-4 scroll-text">Two grades. One obsession.</p>
             </div>
             
-            <div class="relative mb-16 rounded-sm overflow-hidden group z-20 bg-paper isolate">
-                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden bg-paper relative z-20">
-                    <video 
-                        class="w-full h-full object-cover"
-                        autoplay muted loop playsinline>
+            <div class="relative mb-16 rounded-sm overflow-hidden group z-20 bg-black isolate shadow-2xl">
+                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden relative z-20 bg-black">
+                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
                         <source src="video.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-ink/90 via-ink/60 to-transparent z-30">
-                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-ink/90 via-ink/60 to-transparent z-30 pointer-events-none">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 pointer-events-auto">
                         <div>
                             <span class="font-mono text-[10px] text-neon uppercase tracking-widest block mb-2">Ceremonial Grade</span>
                             <h4 class="font-sans text-2xl md:text-3xl font-bold text-white uppercase">30g Premium Tin</h4>
                         </div>
                         <div class="flex gap-4">
-                            <div class="text-center">
-                                <span class="font-serif italic text-3xl text-white">30</span>
-                                <span class="block font-mono text-[10px] text-white/60 uppercase">Servings</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="font-serif italic text-3xl text-white">21</span>
-                                <span class="block font-mono text-[10px] text-white/60 uppercase">Days Shaded</span>
-                            </div>
-                            <div class="text-center">
-                                <span class="font-serif italic text-3xl text-neon">A+</span>
-                                <span class="block font-mono text-[10px] text-white/60 uppercase">Grade</span>
-                            </div>
+                            <div class="text-center"><span class="font-serif italic text-3xl text-white">30</span><span class="block font-mono text-[10px] text-white/60 uppercase">Servings</span></div>
+                            <div class="text-center"><span class="font-serif italic text-3xl text-white">21</span><span class="block font-mono text-[10px] text-white/60 uppercase">Days Shaded</span></div>
+                            <div class="text-center"><span class="font-serif italic text-3xl text-neon">A+</span><span class="block font-mono text-[10px] text-white/60 uppercase">Grade</span></div>
                         </div>
                     </div>
                 </div>
@@ -406,10 +326,7 @@
                 <div class="group relative overflow-hidden rounded-sm hover-target bg-white/30 border border-ink/10 hover:bg-white hover:shadow-xl transition-all duration-500">
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
-                            <div>
-                                <span class="font-mono text-[8px] text-gray-400 uppercase tracking-widest block">Everyday Use</span>
-                                <h4 class="font-sans text-xl font-bold uppercase">Daily</h4>
-                            </div>
+                            <div><span class="font-mono text-[8px] text-gray-400 uppercase tracking-widest block">Everyday Use</span><h4 class="font-sans text-xl font-bold uppercase">Daily</h4></div>
                             <span class="font-serif text-lg italic text-matcha">$29</span>
                         </div>
                         <p class="font-sans text-gray-500 mb-3 leading-snug text-[11px]">Smooth, balanced, reliable. 30g tin.</p>
@@ -417,22 +334,14 @@
                             <span class="font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 border border-ink/20 rounded-full">Ceremonial</span>
                             <span class="font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 border border-ink/20 rounded-full">Uji</span>
                         </div>
-                        <button class="w-full bg-ink text-white p-2 font-mono text-[9px] font-bold uppercase tracking-widest hover:bg-matcha transition-colors">
-                            Coming Soon
-                        </button>
+                        <button class="w-full bg-ink text-white p-2 font-mono text-[9px] font-bold uppercase tracking-widest hover:bg-matcha transition-colors">Coming Soon</button>
                     </div>
                 </div>
-                
                 <div class="group relative overflow-hidden rounded-sm hover-target bg-white/30 border border-ink/10 hover:bg-white hover:shadow-xl transition-all duration-500">
-                    <div class="absolute top-2 right-2">
-                        <span class="font-mono text-[8px] text-white bg-matcha px-1.5 py-0.5 uppercase tracking-widest">Limited</span>
-                    </div>
+                    <div class="absolute top-2 right-2"><span class="font-mono text-[8px] text-white bg-matcha px-1.5 py-0.5 uppercase tracking-widest">Limited</span></div>
                     <div class="p-4">
                         <div class="flex justify-between items-center mb-2">
-                            <div>
-                                <span class="font-mono text-[8px] text-gray-400 uppercase tracking-widest block">Competition Grade</span>
-                                <h4 class="font-sans text-xl font-bold uppercase">Premium</h4>
-                            </div>
+                            <div><span class="font-mono text-[8px] text-gray-400 uppercase tracking-widest block">Competition Grade</span><h4 class="font-sans text-xl font-bold uppercase">Premium</h4></div>
                             <span class="font-serif text-lg italic text-matcha">$45</span>
                         </div>
                         <p class="font-sans text-gray-500 mb-3 leading-snug text-[11px]">First harvest. Intense umami. 30g tin.</p>
@@ -440,9 +349,7 @@
                             <span class="font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 border border-ink/20 rounded-full">First Harvest</span>
                             <span class="font-mono text-[8px] uppercase tracking-widest px-2 py-0.5 border border-ink/20 rounded-full">Single Estate</span>
                         </div>
-                        <button class="w-full bg-ink text-white p-2 font-mono text-[9px] font-bold uppercase tracking-widest hover:bg-matcha transition-colors">
-                            Coming Soon
-                        </button>
+                        <button class="w-full bg-ink text-white p-2 font-mono text-[9px] font-bold uppercase tracking-widest hover:bg-matcha transition-colors">Coming Soon</button>
                     </div>
                 </div>
             </div>
@@ -450,23 +357,13 @@
 
         <section id="waitlist" class="py-40 px-6 md:px-20 glass-section text-center relative">
             <div class="relative z-10 max-w-xl mx-auto">
-                <div class="mb-8 inline-block">
-                    <span class="font-mono text-xs text-neon bg-ink px-3 py-1 uppercase tracking-widest">Early Access Only</span>
-                </div>
-                <h2 class="font-sans font-bold text-5xl md:text-7xl text-ink uppercase tracking-tighter mb-4 leading-none scroll-text">
-                    Secure Your<br>Position.
-                </h2>
-                <p class="font-serif italic text-xl text-gray-500 mb-12 scroll-text">
-                    Limited first batch release. <span class="text-ink font-bold not-italic" id="count">347</span> secured so far.
-                </p>
-
+                <div class="mb-8 inline-block"><span class="font-mono text-xs text-neon bg-ink px-3 py-1 uppercase tracking-widest">Early Access Only</span></div>
+                <h2 class="font-sans font-bold text-5xl md:text-7xl text-ink uppercase tracking-tighter mb-4 leading-none scroll-text">Secure Your<br>Position.</h2>
+                <p class="font-serif italic text-xl text-gray-500 mb-12 scroll-text">Limited first batch release. <span class="text-ink font-bold not-italic" id="count">347</span> secured so far.</p>
                 <form class="w-full flex flex-col gap-4" onsubmit="event.preventDefault(); this.innerHTML='<div class=\'font-serif italic text-2xl\'>Access Granted.</div>'">
                     <input type="email" placeholder="ENCRYPTED EMAIL" class="bg-white border border-ink/20 p-4 font-mono text-xs uppercase tracking-widest outline-none focus:border-ink transition-colors">
-                    <button class="hover-target bg-ink text-white p-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-matcha transition-colors">
-                        Join The Supply
-                    </button>
+                    <button class="hover-target bg-ink text-white p-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-matcha transition-colors">Join The Supply</button>
                 </form>
-                
                 <p class="mt-6 font-mono text-[9px] text-gray-400 uppercase">15% Off for first 500 members</p>
             </div>
         </section>
@@ -485,12 +382,13 @@
 
         function enterSite() {
             document.getElementById('gate').classList.add('gate-open');
+            // Delays for blobs appearing
             gsap.to(".mb-1", { opacity: 0.5, duration: 2, delay: 0.5 });
             gsap.to(".mb-2", { opacity: 0.4, duration: 2, delay: 0.5 });
             initAnimations();
         }
 
-        // Counter Animation for Social Proof
+        // Counter Animation
         setTimeout(() => {
             const countEl = document.getElementById('count');
             let count = 347;
@@ -541,13 +439,12 @@
                 }, ease: "sine.inOut"
             }, 0);
 
-            // Process Sticky Scroll - Image switching
+            // Process Sticky Scroll
             const processSteps = document.querySelectorAll('.process-step');
             const processImages = document.querySelectorAll('.process-img');
             
             processSteps.forEach((step) => {
                 const stepNum = step.dataset.step;
-                
                 ScrollTrigger.create({
                     trigger: step,
                     start: "top center",
