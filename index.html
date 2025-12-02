@@ -169,10 +169,11 @@
                     <div class="hidden lg:block lg:w-1/2 relative">
                         <div class="sticky top-0 h-screen flex items-center justify-center p-12">
                             <div class="process-image-container relative w-full h-[70vh] overflow-hidden rounded-sm bg-ink">
-                                <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700" data-step="1">
-                                <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="2">
-                                <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="3">
-                                <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" data-step="4">
+                                <!-- HIER: scale-125 hinzugefügt, damit Platz für die Bewegung ist -->
+                                <img src="1.1.jpg" alt="Darkness" class="process-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 scale-125" data-step="1">
+                                <img src="2.jpg" alt="Harvest" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="2">
+                                <img src="3.jpg" alt="Grind" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="3">
+                                <img src="4.jpg" alt="Drop" class="process-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 scale-125" data-step="4">
                             </div>
                         </div>
                     </div>
@@ -305,7 +306,7 @@
 
         <section id="supply" class="py-40 px-6 md:px-20 glass-section">
             <div class="mb-16">
-                <h2 class="font-serif text-5xl italic scroll-text">The Stash.</h2>
+                <h3 class="font-serif text-5xl italic scroll-text">The Stash.</h3>
                 <p class="font-sans text-gray-500 mt-4 scroll-text">Two grades. One obsession.</p>
             </div>
             
@@ -426,10 +427,11 @@
                 }, ease: "sine.inOut"
             }, 0);
 
-            // Process Sticky Scroll
+            // Process Sticky Scroll Logic
             const processSteps = document.querySelectorAll('.process-step');
             const processImages = document.querySelectorAll('.process-img');
             
+            // 1. Die Logik für das Umschalten der Bilder (Fade In/Out)
             processSteps.forEach((step) => {
                 const stepNum = step.dataset.step;
                 ScrollTrigger.create({
@@ -450,6 +452,18 @@
                     }
                 });
             }
+
+            // 2. NEU: Parallax-Animation für die Sticky-Bilder (Verschiebung auf Y-Achse)
+            gsap.to(".process-img", {
+                scrollTrigger: {
+                    trigger: "#process", // Animation läuft über die gesamte Sektion
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: 100, // Langsame Bewegung nach unten
+                ease: "none"
+            });
 
             document.querySelectorAll('.line-anim').forEach(el => {
                 gsap.to(el, { scrollTrigger: { trigger: el, start: "top 85%" }, width: "100%", duration: 1.5, ease: "expo.out" });
