@@ -489,7 +489,6 @@
             initAnimations();
         }
 
-        // Counter Animation for Social Proof
         setTimeout(() => {
             const countEl = document.getElementById('count');
             let count = 347;
@@ -501,7 +500,6 @@
             }, 2000);
         }, 5000);
 
-        // Cursor
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', e => { gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 }); });
         document.querySelectorAll('.hover-target').forEach(el => {
@@ -512,7 +510,6 @@
         function initAnimations() {
             gsap.from(".hero-title", { y: 100, opacity: 0, duration: 1.5, stagger: 0.15, ease: "power4.out" });
 
-            // Blob Animation
             let tl = gsap.timeline({
                 scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 }
             });
@@ -540,7 +537,6 @@
                 }, ease: "sine.inOut"
             }, 0);
 
-            // Process Sticky Scroll - Image switching
             const processSteps = document.querySelectorAll('.process-step');
             const processImages = document.querySelectorAll('.process-img');
             
