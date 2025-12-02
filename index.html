@@ -41,14 +41,23 @@
             color: #0A0A0A; 
             overflow-x: hidden; 
             cursor: default; 
+            /* WICHTIG: Erlaubt z-index -1 für Kinder */
+            position: relative; 
+            z-index: 0;
         }
         ::-webkit-scrollbar { width: 0; background: transparent; }
 
         /* --- 1. FIXED BACKGROUND BLOBS --- */
-        /* FIX: Blobs are strictly z-0 */
+        /* FIX: Z-Index auf -1 zwingt die Blobs hinter ALLES andere */
         .blob-layer { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: 0; overflow: hidden;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100vh;
+            pointer-events: none; 
+            z-index: -1 !important; /* Erzwingt Hintergrund */
+            overflow: hidden;
         }
         .blob { 
             position: absolute; border-radius: 50%;
@@ -301,8 +310,8 @@
                 <p class="font-sans text-gray-500 mt-4 scroll-text">Two grades. One obsession.</p>
             </div>
             
-            <div class="relative mb-16 rounded-sm overflow-hidden group z-20 bg-black isolate shadow-2xl">
-                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden relative z-20 bg-black">
+            <div class="relative mb-16 rounded-sm overflow-hidden group z-50 bg-black shadow-2xl">
+                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden relative bg-black">
                     <video class="w-full h-full object-cover" autoplay muted loop playsinline>
                         <source src="video.mp4" type="video/mp4">
                     </video>
