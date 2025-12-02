@@ -45,9 +45,10 @@
         ::-webkit-scrollbar { width: 0; background: transparent; }
 
         /* --- 1. FIXED BACKGROUND BLOBS --- */
+        /* Z-Index auf -1 gesetzt, damit sie garantiert hinten bleiben */
         .blob-layer { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: 0; overflow: hidden;
+            pointer-events: none; z-index: -1; overflow: hidden;
         }
         .blob { 
             position: absolute; border-radius: 50%;
@@ -186,7 +187,7 @@
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="1">
                             <div class="max-w-md">
                                 <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="1.1" 
+                                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800" 
                                          alt="Darkness" class="w-full h-full object-cover">
                                 </div>
                                 <span class="font-mono text-sm text-matcha block mb-4">01</span>
@@ -204,7 +205,7 @@
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="2">
                             <div class="max-w-md">
                                 <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="1.jpg" 
+                                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=800" 
                                          alt="Harvest" class="w-full h-full object-cover">
                                 </div>
                                 <span class="font-mono text-sm text-matcha block mb-4">02</span>
@@ -222,7 +223,7 @@
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="3">
                             <div class="max-w-md">
                                 <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="3.jpg" 
+                                    <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=800" 
                                          alt="Grind" class="w-full h-full object-cover">
                                 </div>
                                 <span class="font-mono text-sm text-matcha block mb-4">03</span>
@@ -240,7 +241,7 @@
                         <div class="process-step min-h-[80vh] lg:min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20" data-step="4">
                             <div class="max-w-md">
                                 <div class="lg:hidden mb-8 rounded-sm overflow-hidden bg-ink aspect-video">
-                                    <img src="4.jpg" 
+                                    <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800" 
                                          alt="Drop" class="w-full h-full object-cover">
                                 </div>
                                 <span class="font-mono text-sm text-matcha block mb-4">04</span>
@@ -369,15 +370,15 @@
                 <p class="font-sans text-gray-500 mt-4 scroll-text">Two grades. One obsession.</p>
             </div>
             
-            <div class="relative mb-16 rounded-sm overflow-hidden group">
-                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden bg-paper">
+            <div class="relative mb-16 rounded-sm overflow-hidden group z-20 bg-paper isolate">
+                <div class="aspect-[21/9] md:aspect-[3/1] overflow-hidden bg-paper relative z-20">
                     <video 
                         class="w-full h-full object-cover"
                         autoplay muted loop playsinline>
                         <source src="video.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-ink/90 via-ink/60 to-transparent">
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-ink/90 via-ink/60 to-transparent z-30">
                     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                         <div>
                             <span class="font-mono text-[10px] text-neon uppercase tracking-widest block mb-2">Ceremonial Grade</span>
@@ -489,6 +490,7 @@
             initAnimations();
         }
 
+        // Counter Animation for Social Proof
         setTimeout(() => {
             const countEl = document.getElementById('count');
             let count = 347;
@@ -500,6 +502,7 @@
             }, 2000);
         }, 5000);
 
+        // Cursor
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', e => { gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 }); });
         document.querySelectorAll('.hover-target').forEach(el => {
@@ -510,6 +513,7 @@
         function initAnimations() {
             gsap.from(".hero-title", { y: 100, opacity: 0, duration: 1.5, stagger: 0.15, ease: "power4.out" });
 
+            // Blob Animation
             let tl = gsap.timeline({
                 scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 }
             });
@@ -537,6 +541,7 @@
                 }, ease: "sine.inOut"
             }, 0);
 
+            // Process Sticky Scroll - Image switching
             const processSteps = document.querySelectorAll('.process-step');
             const processImages = document.querySelectorAll('.process-img');
             
