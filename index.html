@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Matcha Supply Co. | The Source Code</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +46,14 @@
         }
         ::-webkit-scrollbar { width: 0; background: transparent; }
 
+        /* Safe area support for notch/dynamic island */
+        @supports (padding: max(0px)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+
         /* --- 1. FIXED BACKGROUND BLOBS --- */
         .blob-layer { 
             position: fixed; 
@@ -87,13 +95,20 @@
             transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
         body.hovering #cursor { width: 50px; height: 50px; background-color: rgba(204, 255, 0, 0.1); border-color: transparent; }
+        
+        /* Mobile hero text size - double the size */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 23.4vw !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <div id="cursor" class="hidden md:block"></div>
 
-    <div id="gate" class="fixed inset-0 bg-paper flex flex-col items-center justify-center h-screen w-full text-ink border-b-8 border-ink z-50">
+    <div id="gate" class="fixed inset-0 bg-paper flex flex-col items-center justify-center h-screen w-full text-ink border-b-8 border-ink z-50" style="padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom);">
         <div class="gate-blob-container">
             <div class="gb-1 top-0 left-0"></div><div class="gb-2 bottom-0 right-0"></div>
         </div>
@@ -110,7 +125,7 @@
         <div class="blob mb-2" id="b2"></div>
     </div>
 
-    <nav class="fixed top-0 w-full z-40 px-8 py-6 flex justify-between items-start pointer-events-none mix-blend-darken">
+    <nav class="fixed top-0 w-full z-40 px-8 flex justify-between items-start pointer-events-none mix-blend-darken" style="padding-top: max(1.5rem, env(safe-area-inset-top)); padding-left: max(2rem, env(safe-area-inset-left)); padding-right: max(2rem, env(safe-area-inset-right));">
         <a href="#" class="font-sans text-xs font-extrabold uppercase tracking-widest pointer-events-auto hover-target">M.S.Co.</a>
         <div class="flex flex-col items-end font-mono text-[10px] uppercase tracking-widest gap-1 pointer-events-auto text-gray-600">
             <span class="text-ink">Pre-Launch</span>
@@ -121,7 +136,7 @@
     <main class="relative z-10">
 
         <!-- HERO SECTION -->
-        <section class="min-h-[85vh] md:min-h-screen flex flex-col justify-center px-6 md:px-20 relative glass-section">
+        <section class="min-h-[90vh] md:min-h-screen flex flex-col justify-center px-6 md:px-20 relative glass-section pt-20 md:pt-0">
             <div class="relative z-10">
                 <div class="overflow-hidden mb-[-1vw]"><h1 class="hero-title font-sans font-bold text-giant uppercase leading-none tracking-tighter text-ink">Pure.</h1></div>
                 <div class="overflow-hidden mb-[-1vw] ml-[12vw]"><h1 class="hero-title font-serif italic text-giant text-matcha leading-none">Potent.</h1></div>
@@ -252,7 +267,7 @@
         </div>
 
         <!-- LAB SPECS -->
-        <section id="lab" class="pt-10 pb-24 md:pb-40 px-6 md:px-20 glass-section text-ink relative">
+        <section id="lab" class="pt-24 md:pt-10 pb-24 md:pb-40 px-6 md:px-20 glass-section text-ink relative">
             <div class="max-w-6xl mx-auto">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 border-b border-ink/20 pb-6 md:pb-8 gap-4 md:gap-6">
                     <h3 class="font-serif text-4xl md:text-5xl italic">Analysis.</h3>
